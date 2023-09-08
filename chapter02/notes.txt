@@ -1,0 +1,5 @@
+1. Promises:
+     It is an assurance that something will be done.
+     Promise is used to keep track of whether the 
+     asynchronous event has been executed or not 
+     and determines what happens after the event has occurred.

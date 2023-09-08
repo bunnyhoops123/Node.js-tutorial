@@ -1,20 +1,19 @@
+//create readStream and writeStream
+
 const fs = require('fs');
 
-//Create readStream 
-const rs = fs.createReadStream('./files/lorem.txt', {encoding:'utf8'});
+const rs = fs.createReadStream('./chapter02/files/lorem.txt');
 
+const ws = fs.createWriteStream('./chapter02/files/new_lorem.txt');
 
-//Create writeStream
+// rs.on('data', (data) => {
+//     ws.write(data);
+// })
+//The above process is slow and can be done by the following
 
-const ws = fs.createWriteStream('./files/newLorem.txt');
-
-//Listen and write to file
-rs.on('data', (dataChunk) => {
-    ws.write(dataChunk);
-})
-//exit on uncaught exceptions
+rs.pipe(ws);
 
 process.on('uncaughtException', (err) => {
     console.log(`Errors: ${err}`);
-    process.exit(1);
+    console.exit(1);
 })
